@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${title}"></title>
+</head>
+<body>
+    <h1 th:text="${title}"></h1>
+
+    <form th:action="@{/formSession}" th:object="${classSession}" method="post">
+
+        <p>Name Session:</p>
+        <input type="text" th:field="*{name}"/>
+
+        <p>Observation: </p>
+        <input type="text" th:field="*{observation}"/>
+
+
+        <!--
+        <p>Date: </p>
+        <input type="date" th:field="*{dateSession}"/>
+        -->
+
+        <br>
+        <input type="submit" value="Enviar">
+
+    </form>
+
+</body>
+</html>
