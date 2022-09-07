@@ -1,5 +1,7 @@
 package pe.edu.com.attendance.attendance.domain;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 
 public class ClassSession {
@@ -8,7 +10,7 @@ public class ClassSession {
 
     private String observation;
 
-
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date dateSession;
 
     public ClassSession() {
