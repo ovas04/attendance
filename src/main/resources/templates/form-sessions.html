@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${title}"></title>
+</head>
+<body>
+    <h1 th:text="${title}"></h1>
+
+    <form th:action="@{/formSession}" th:object="${classSession}" method="post">
+
+        <p>Name Session:</p>
+        <input type="text" th:field="*{name}"/>
+
+        <p>Observation: </p>
+        <input type="text" th:field="*{observation}"/>
+
+        <p>Date: </p>
+        <input type="date" th:field="*{dateSession}"/>
+
+        <div>
+            <table class="table table-dark text-center my-3">
+                <thead>
+                <tr>
+                    <td>Nr</td>
+                    <td>Name</td>
+                    <td>Lastname</td>
+                    <td>email</td>
+                    <td>phone</td>
+                    <td>status</td>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="studentSession, iter : *{studentsSessions}">
+                    <td class="text-center">
+                        <label>
+                            <input
+                                    th:field="*{studentsSessions[__${iter.index}__].student.id}"
+                                    th:value="${studentSession.student.id}" type="text"
+                                    disabled/>
+                        </label>
+                    </td>
+                    <td class="text-center">
+                        <input
+                                th:field="*{studentsSessions[__${iter.index}__].student.name}"
+                                th:value="${studentSession.student.name}" type="text"
+                                disabled/>
+                    </td>
+                    <td class="text-center">
+                        <input
+                                th:field="*{studentsSessions[__${iter.index}__].student.lastname}"
+                                th:value="${studentSession.student.lastname}" type="text"
+                                disabled/>
+                    </td>
+                    <td class="text-center">
+                        <input
+                                th:field="*{studentsSessions[__${iter.index}__].student.email}"
+                                th:value="${studentSession.student.email}" type="text"
+                                disabled/>
+                    </td>
+                    <td class="text-center">
+                        <input
+                                th:field="*{studentsSessions[__${iter.index}__].student.phone}"
+                                th:value="${studentSession.student.phone}" type="text"
+                                disabled/>
+                    </td>
+                    <td class="text-center">
+                        <input
+                                th:field="*{studentsSessions[__${iter.index}__].status}"
+                                th:value="${studentSession.status}" type="checkbox"
+                                th:checked="${studentSession.status}"
+                        />
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+
+        <br>
+        <input type="submit" value="Enviar">
+
+    </form>
+
+
+
+
+</body>
+</html>

@@ -7,6 +7,10 @@
 <body>
     <h1 th:text="${title}"></h1>
 
+    <a th:href="@{/student/form}"> Create New Student </a>
+
+    <a th:href="@{/index}"> Sessions </a>
+
     <ul>
 
         <li th:each="student : ${students}" >

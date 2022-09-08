@@ -2,16 +2,32 @@ package pe.edu.com.attendance.attendance.domain;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
+@Entity
+@Table(name = "class_sessions")
 public class ClassSession {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(name = "name_session")
     private String name;
 
+    @Column(name = "observation")
     private String observation;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @Column(name = "date_session")
     private Date dateSession;
+
+
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "class_session_id")
+    private List<StudentsSession> studentsSessions;
 
     public ClassSession() {
     }
@@ -43,5 +59,21 @@ public class ClassSession {
 
     public void setDateSession(Date dateSession) {
         this.dateSession = dateSession;
+    }
+
+    public List<StudentsSession> getStudentsSessions() {
+        return studentsSessions;
+    }
+
+    public void setStudentsSessions(List<StudentsSession> studentsSessions) {
+        this.studentsSessions = studentsSessions;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 }
