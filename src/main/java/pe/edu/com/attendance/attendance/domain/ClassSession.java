@@ -2,15 +2,24 @@ package pe.edu.com.attendance.attendance.domain;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
 
-public class ClassSession {
+@Entity
+@Table(name = "class_sessions")
+public class ClassSession implements Serializable {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     private String name;
 
     private String observation;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @Column(name = "date_session")
     private Date dateSession;
 
     public ClassSession() {
@@ -43,5 +52,13 @@ public class ClassSession {
 
     public void setDateSession(Date dateSession) {
         this.dateSession = dateSession;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 }
