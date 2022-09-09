@@ -1,6 +1,8 @@
 package pe.edu.com.attendance.attendance.controllers;
 
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -8,6 +10,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import pe.edu.com.attendance.attendance.domain.ClassSession;
+import pe.edu.com.attendance.attendance.service.ISessionService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,20 +18,16 @@ import java.util.List;
 @Controller
 public class AttendanceController {
 
+    @Autowired
+    private ISessionService sessionService;
+
+
     @RequestMapping(value = {"/","/index","/home"}, method = RequestMethod.GET)
     public String listSessions(Model model){
 
-        ClassSession classSession = new ClassSession("Session 1","");
-
-        List<ClassSession> classSessionList = new ArrayList<>();
-
-        classSessionList.add(classSession);
-
-        classSessionList.add(new ClassSession("Session 2","El profesor boto a un alumno"));
-
         model.addAttribute("title","List Sessions");
 
-        model.addAttribute("classSessionList", classSessionList);
+        model.addAttribute("classSessionList",  sessionService.findAll());
 
         return "index";
     }
