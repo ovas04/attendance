@@ -15,7 +15,7 @@ import java.util.List;
 @Controller
 public class AttendanceController {
 
-    @RequestMapping(value = {"/index","/home"}, method = RequestMethod.GET)
+    @RequestMapping(value = {"/","/index","/home"}, method = RequestMethod.GET)
     public String listSessions(Model model){
 
         ClassSession classSession = new ClassSession("Session 1","");

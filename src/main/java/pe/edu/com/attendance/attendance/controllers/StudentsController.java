@@ -30,6 +30,12 @@ public class StudentsController {
 
     }
 
+    @RequestMapping(value="/form", method =RequestMethod.GET)
+    public String newStudentForm(Model model){
+
+        model.addAttribute("title", "Create New Student");
+        return "/student/form";
+    }
 
 
 
