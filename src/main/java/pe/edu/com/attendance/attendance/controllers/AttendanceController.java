@@ -41,14 +41,14 @@ public class AttendanceController {
 
         model.addAttribute("classSession", classSession);
 
-        return "formSession";
+        return "form-session";
     }
 
-    @RequestMapping(value = "/formSession",method = RequestMethod.POST)
+    @RequestMapping(value = "/form-session",method = RequestMethod.POST)
     public String saveClassSession(@ModelAttribute("classSession")  ClassSession classSession,
                                    Model model){
 
-        String  name = classSession.getName();
+        sessionService.save(classSession);
 
         return "redirect:/index";
     }

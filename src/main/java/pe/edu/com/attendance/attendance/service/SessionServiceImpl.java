@@ -1,6 +1,8 @@
 package pe.edu.com.attendance.attendance.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import pe.edu.com.attendance.attendance.dao.IClassSessionDao;
 import pe.edu.com.attendance.attendance.domain.ClassSession;
 
 import java.util.ArrayList;
@@ -9,33 +11,30 @@ import java.util.List;
 @Service
 public class SessionServiceImpl implements ISessionService{
 
+    @Autowired
+    private IClassSessionDao classSessionDao;
 
     @Override
     public List<ClassSession> findAll() {
 
-        ClassSession classSession = new ClassSession("Session X","");
+        return (List<ClassSession>) classSessionDao.findAll();
 
-        List<ClassSession> classSessionList = new ArrayList<>();
-
-        classSessionList.add(classSession);
-
-        classSessionList.add(new ClassSession("Session Y","El profesor boto a un alumno"));
-
-        return classSessionList;
     }
 
     @Override
     public ClassSession findById(Long id) {
-        return null;
+
+        return classSessionDao.findById(id).orElse(null);
+
     }
 
     @Override
     public ClassSession save(ClassSession classSession) {
-        return null;
+        return classSessionDao.save(classSession);
     }
 
     @Override
-    public ClassSession delete(Long id) {
-        return null;
+    public void delete(Long id) {
+        classSessionDao.deleteById(id);
     }
 }

@@ -23,7 +23,7 @@
         <tbody class="table-group-divider">
             <tr th:each="_session : ${classSessionList}">
                 <th th:text="${_session.name}"></th>
-                <th th:text="${_session.dateSession}"></th>
+                <th th:text="${#dates.format(_session.dateSession, 'yyyy-MM-dd')  }"></th>
                 <th >
                    <!--  <a th:href="@{/detail} + ${_session.id}" th:text="'details'"></a> --> 
                 </th>

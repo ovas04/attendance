@@ -12,6 +12,6 @@ public interface ISessionService {
 
     ClassSession save(ClassSession classSession);
 
-    ClassSession delete(Long id);
+    void delete(Long id);
 
 }

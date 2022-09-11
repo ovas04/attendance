@@ -5,6 +5,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "class_sessions")
@@ -21,6 +22,10 @@ public class ClassSession implements Serializable {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Column(name = "date_session")
     private Date dateSession;
+
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "class_session_id")
+    private List<StudentsSessions> studentsSessionsList;
 
     public ClassSession() {
     }
@@ -60,5 +65,13 @@ public class ClassSession implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public List<StudentsSessions> getStudentsSessionsList() {
+        return studentsSessionsList;
+    }
+
+    public void setStudentsSessionsList(List<StudentsSessions> studentsSessionsList) {
+        this.studentsSessionsList = studentsSessionsList;
     }
 }
