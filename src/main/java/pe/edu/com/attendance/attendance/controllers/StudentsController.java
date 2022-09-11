@@ -26,7 +26,7 @@ public class StudentsController {
 
         model.addAttribute("title","List Students");
 
-        return "students";
+        return "student/students";
 
     }
 

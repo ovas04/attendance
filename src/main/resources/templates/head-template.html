@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Template</title>
+</head>
+<body>
+
+<div th:fragment="head-template">
+
+    <div class="p-3 bg-info bg-opacity-10 border border-info border-start-0 rounded-end text-center">
+        <h1 th:text="${title}"></h1>
+    </div>
+
+    <hr class="border border-primary border-2 opacity-50">
+
+    <ul class="nav nav-tabs d-flex justify-content-center">
+        <li class="nav-item border border-3">
+            <a class="nav-link" th:href="@{/form}"> Create New Session</a>
+        </li>
+        <li class="nav-item border border-3 primary" >
+            <a class="nav-link" th:href="@{/index}"> List Sessions</a>
+        </li>
+        <li class="nav-item border border-3">
+            <a class="nav-link" th:href="@{/student/form}"> Create New Student</a>
+        </li>
+        <li class="nav-item border border-3">
+            <a class="nav-link" th:href="@{/student/list}">List Students</a>
+        </li>
+    </ul>
+    <hr class="border border-primary border-2 opacity-50">
+</div>
+
+</body>
+</html>
