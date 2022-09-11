@@ -48,4 +48,6 @@ public class StudentsSessions implements Serializable {
     public void setStatus(Boolean status) {
         this.status = status;
     }
+
+
 }

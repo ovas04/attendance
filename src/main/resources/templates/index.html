@@ -25,7 +25,7 @@
                 <th th:text="${_session.name}"></th>
                 <th th:text="${#dates.format(_session.dateSession, 'yyyy-MM-dd')  }"></th>
                 <th >
-                   <!--  <a th:href="@{/detail} + ${_session.id}" th:text="'details'"></a> --> 
+                   <a th:href="@{/detail/} + ${_session.id}" th:text="'details'"></a>
                 </th>
             </tr>
         </tbody>

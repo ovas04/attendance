@@ -74,4 +74,5 @@ public class ClassSession implements Serializable {
     public void setStudentsSessionsList(List<StudentsSessions> studentsSessionsList) {
         this.studentsSessionsList = studentsSessionsList;
     }
+
 }
